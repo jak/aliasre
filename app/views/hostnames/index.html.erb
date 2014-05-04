@@ -1,0 +1,31 @@
+<h1>Listing hostnames</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Ipaddress</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hostnames.each do |hostname| %>
+      <tr>
+        <td><%= hostname.name %></td>
+        <td><%= hostname.user_id %></td>
+        <td><%= hostname.status %></td>
+        <td><%= hostname.ipaddress %></td>
+        <td><%= link_to 'Show', hostname %></td>
+        <td><%= link_to 'Edit', edit_hostname_path(hostname) %></td>
+        <td><%= link_to 'Destroy', hostname, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hostname', new_hostname_path %>
