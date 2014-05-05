@@ -4,7 +4,7 @@ class HostnamesController < ApplicationController
   # GET /hostnames
   # GET /hostnames.json
   def index
-    @hostnames = Hostname.all
+    @hostnames = current_user.hostnames.all
   end
 
   # GET /hostnames/1
@@ -14,7 +14,8 @@ class HostnamesController < ApplicationController
 
   # GET /hostnames/new
   def new
-    @hostname = Hostname.new
+    @hostname = current_user.hostnames.build
+    @hostname.ipaddress = request.remote_ip
   end
 
   # GET /hostnames/1/edit
@@ -24,7 +25,7 @@ class HostnamesController < ApplicationController
   # POST /hostnames
   # POST /hostnames.json
   def create
-    @hostname = Hostname.new(hostname_params)
+    @hostname = current_user.hostnames.build(hostname_params)
 
     respond_to do |format|
       if @hostname.save
@@ -69,6 +70,6 @@ class HostnamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hostname_params
-      params.require(:hostname).permit(:name, :user_id, :status, :ipaddress)
+      params.require(:hostname).permit(:name, :ipaddress)
     end
 end

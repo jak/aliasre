@@ -1,7 +1,7 @@
 <%= form_for(@hostname) do |f| %>
   <% if @hostname.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@hostname.errors.count, "error") %> prohibited this hostname from being saved:</h2>
+      <h2><%= pluralize(@hostname.errors.count, "error") %> prohibited this alias from being saved:</h2>
 
       <ul>
       <% @hostname.errors.full_messages.each do |message| %>
@@ -13,15 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.text_field :name %>.alias.re
   </div>
   <div class="field">
     <%= f.label :ipaddress %><br>
