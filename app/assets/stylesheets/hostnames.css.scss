@@ -1,3 +1,60 @@
 // Place all the styles related to the hostnames controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_hostname {
+	.field {
+		font-family: "Consolas", "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+		input {
+		   font-family: "Consolas", "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+		}
+	}
+
+	.field.alias {
+		display: block;
+		width: 50%;
+		min-width: 320px;
+		margin: 0 auto;
+		background-color: #fafafa;
+		color: #999;
+		text-align: left;
+
+		input {
+			display: inline;
+			width: 50%;
+			text-align: right;
+			border: 0;
+			box-shadow: none;
+			background-color: #fafafa;
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	.field.ipaddress {
+
+		i, input {
+			display: block;
+			width: 25%;
+			min-width: 280px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		i {
+			font-size: 2em;
+			line-height: 2em;
+		}
+
+		input {
+			background-color: #fafafa;
+			border: 0;
+			box-shadow: none;
+		}
+	}
+
+	.button {
+		margin: 0 auto;
+		display: block;
+	}
+}

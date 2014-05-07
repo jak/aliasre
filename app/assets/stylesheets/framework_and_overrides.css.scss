@@ -40,7 +40,7 @@
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  background-color: #fff;
   }
 section {
   @extend .row;
@@ -89,4 +89,7 @@ section {
   @extend .button;
   @extend .radius;
   @extend .tiny;
+}
+h1 {
+  text-align: center;
 }

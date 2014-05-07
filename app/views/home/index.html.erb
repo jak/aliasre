@@ -1,4 +1,63 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.email, user %></p>
-<% end %>
+  <!-- First Band (Image) -->
+
+  <div class="row masthead">
+    <div class="large-12 columns">
+      <h1>Dynamic DNS from alias.re</h1>
+      <p>Get started now for free! Just pick a name and enter the IP address (we've popped yours in to help!)</p>
+      <%= form_for(@hostname) do |f| %>
+      <div class="field alias">
+        <%= f.text_field :name %>.alias.re
+      </div>
+
+      <div class="field ipaddress">
+        <i class="fi-arrow-right large"></i><%= f.text_field :ipaddress %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Create Alias', class: 'button' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+<!-- Three-up Content Blocks -->
+<%#
+  <div class="row">
+    <div class="large-4 columns">
+      <img src="http://placehold.it/400x300&text=[img]" />
+      <h4>Dynamic DNS</h4>
+      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+    </div>
+    
+    <div class="large-4 columns">
+      <img src="http://placehold.it/400x300&text=[img]" />
+      <h4>API available</h4>
+      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+    </div>
+    
+    <div class="large-4 columns">
+      <img src="http://placehold.it/400x300&text=[img]" />
+      <h4>Try it free</h4>
+      <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
+    </div>
+  
+  </div>
+  %>  
+<!-- Call to Action Panel -->
+<div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h4>Get in touch!</h4>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>Got a question, comment or anything else?</p>
+          </div>
+          <div class="large-3 columns">
+            <a href="mailto:contact@alias.re" class="radius button right">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>

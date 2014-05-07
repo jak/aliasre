@@ -1,4 +1,5 @@
 class HostnamesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_hostname, only: [:show, :edit, :update, :destroy]
 
   # GET /hostnames
@@ -14,7 +15,7 @@ class HostnamesController < ApplicationController
 
   # GET /hostnames/new
   def new
-    @hostname = current_user.hostnames.build
+    @hostname = user_signed_in? ? current_user.hostnames.build : Hostname.new
     @hostname.ipaddress = request.remote_ip
   end
 
