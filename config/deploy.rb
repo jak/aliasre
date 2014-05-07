@@ -18,6 +18,7 @@ set :deploy_to, '/home/alias/app'
 
 # Default value for :log_level is :debug
 # set :log_level, :debug
+set :log_level, :info
 
 # Default value for :pty is false
 # set :pty, true
