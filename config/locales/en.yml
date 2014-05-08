@@ -25,3 +25,8 @@ en:
       hostname:
         name: "Alias"
         ipaddress: "IP Address"
+    submit:
+      hostname:
+        create: "Create Alias"
+        submit: "Save"
+        update: "Update"

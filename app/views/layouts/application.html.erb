@@ -18,5 +18,20 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
+    <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p><a href="https://jak.io/">made by jak</a></p>
+        </div>
+        <div class="large-6 columns text-right">
+          <p>proudly powering <%= alias_count %> aliases</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+ 
+  <!-- End Footer -->
   </body>
 </html>
