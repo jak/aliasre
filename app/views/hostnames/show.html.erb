@@ -1,22 +1,11 @@
-<p>
-  <strong>Name:</strong>
-  <%= @hostname.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @hostname.user_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @hostname.status %>
-</p>
-
-<p>
-  <strong>Ipaddress:</strong>
-  <%= @hostname.ipaddress %>
-</p>
-
-<%= link_to 'Edit', edit_hostname_path(@hostname) %> |
-<%= link_to 'Back', hostnames_path %>
+<div class="row masthead">
+  <div class="large-12 columns">
+    <h1>Alias</h1>
+    <% if not @hostname.owned? %>
+      <p class="warning"><strong>You could lose this domain name at any time!</strong> 
+      <%= link_to 'Create an account', new_user_registration_path %> (or <%= link_to 'login', new_user_session_path %> if you have one) to take ownership.</p>
+    <% end %>
+    <p class="alias"><%= @hostname.fqdn %> <i class="fi-arrow-right large"></i> <%= @hostname.ipaddress %></p>
+    <%= link_to 'Update', edit_hostname_path(@hostname), class: 'button' %>
+  </div>
+</div>

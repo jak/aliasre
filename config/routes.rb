@@ -1,7 +1,14 @@
 Aliasre::Application.routes.draw do
-  resources :hostnames, path: 'aliases'
+  resources :hostnames, path: 'aliases', param: :name
 
-  root :to => "home#index"
+  authenticated :user do
+    root to: "hostnames#index", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root to: "home#index"
+  end
+
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
 end

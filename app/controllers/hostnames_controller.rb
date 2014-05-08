@@ -11,6 +11,8 @@ class HostnamesController < ApplicationController
   # GET /hostnames/1
   # GET /hostnames/1.json
   def show
+    @hostname.user ||= current_user
+    @hostname.save
   end
 
   # GET /hostnames/new
@@ -26,7 +28,7 @@ class HostnamesController < ApplicationController
   # POST /hostnames
   # POST /hostnames.json
   def create
-    @hostname = current_user.hostnames.build(hostname_params)
+    @hostname = user_signed_in? ? current_user.hostnames.build(hostname_params) : Hostname.new(hostname_params)
 
     respond_to do |format|
       if @hostname.save
@@ -66,7 +68,7 @@ class HostnamesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hostname
-      @hostname = Hostname.find(params[:id])
+      @hostname = Hostname.find_by_name(params[:name])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

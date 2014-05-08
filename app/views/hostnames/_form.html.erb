@@ -11,15 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+  <div class="field alias">
     <%= f.text_field :name %>.alias.re
   </div>
-  <div class="field">
-    <%= f.label :ipaddress %><br>
+  <div class="field ipaddress">
+    <i class="fi-arrow-right large"></i>
     <%= f.text_field :ipaddress %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: 'button' %>
   </div>
 <% end %>

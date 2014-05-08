@@ -2,11 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.new_hostname {
+.new_hostname, .edit_hostname {
 	.field {
 		font-family: "Consolas", "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+		font-size: 1.5em;
 		input {
 		   font-family: "Consolas", "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+		   font-size: 1em;
 		}
 	}
 
@@ -54,7 +56,32 @@
 	}
 
 	.button {
-		margin: 0 auto;
+		margin: 2rem auto;
 		display: block;
+	}
+}
+
+p.alias {
+	font-family: "Consolas", "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+	font-size: 2em;
+}
+
+table {
+	margin: 2rem auto;
+}
+
+tr {
+	font-family: "Consolas", "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+	font-size: 1.2em;
+}
+
+.warning {
+	background: red;
+	border-radius: 5px;
+	padding: 1rem;	
+	color: white;
+	a, a:active, a:visited, a:hover {
+		color: white;
+		text-decoration: underline;
 	}
 }
