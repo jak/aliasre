@@ -1,5 +1,5 @@
 class HostnamesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :destroy]
   before_action :set_hostname, only: [:show, :edit, :update, :destroy]
 
   # GET /hostnames
@@ -32,7 +32,7 @@ class HostnamesController < ApplicationController
 
     respond_to do |format|
       if @hostname.save
-        format.html { redirect_to @hostname, notice: 'Hostname was successfully created.' }
+        format.html { redirect_to @hostname, notice: 'Alias was successfully created.' }
         format.json { render :show, status: :created, location: @hostname }
       else
         format.html { render :new }
@@ -45,8 +45,8 @@ class HostnamesController < ApplicationController
   # PATCH/PUT /hostnames/1.json
   def update
     respond_to do |format|
-      if @hostname.update(hostname_params)
-        format.html { redirect_to @hostname, notice: 'Hostname was successfully updated.' }
+      if @hostname.update(hostname_update_params)
+        format.html { redirect_to @hostname, notice: 'IP address was successfully updated.' }
         format.json { render :show, status: :ok, location: @hostname }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class HostnamesController < ApplicationController
   def destroy
     @hostname.destroy
     respond_to do |format|
-      format.html { redirect_to hostnames_url, notice: 'Hostname was successfully destroyed.' }
+      format.html { redirect_to hostnames_url, notice: 'Alias was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,5 +74,9 @@ class HostnamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hostname_params
       params.require(:hostname).permit(:name, :ipaddress)
+    end
+
+    def hostname_update_params
+      params.require(:hostname).permit(:ipaddress)
     end
 end

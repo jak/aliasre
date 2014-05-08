@@ -2,11 +2,18 @@
 
   <div class="row masthead">
     <div class="large-12 columns">
-      <h1>Dynamic DNS for free/h1>
+      <h1>Dynamic DNS for free</h1>
       <p>Get started now for free! Just pick a name and enter the IP address (we've popped yours in to help!)</p>
       <%= form_for(@hostname) do |f| %>
       <div class="field alias">
-        <%= f.text_field :name %>.alias.re
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <%= f.text_field :name %>
+          </div>
+          <div class="small-3 columns">
+            <span class="postfix">.alias.re</span>
+          </div>
+        </div>
       </div>
 
       <div class="field ipaddress">

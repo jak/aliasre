@@ -2,7 +2,6 @@
   <% if @hostname.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hostname.errors.count, "error") %> prohibited this alias from being saved:</h2>
-
       <ul>
       <% @hostname.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,7 +11,14 @@
   <% end %>
 
   <div class="field alias">
-    <%= f.text_field :name %>.alias.re
+    <div class="row collapse">
+      <div class="small-9 columns">
+        <%= f.text_field :name, disabled: true %>
+      </div>
+      <div class="small-3 columns">
+        <span class="postfix">.alias.re</span>
+      </div>
+    </div>
   </div>
   <div class="field ipaddress">
     <i class="fi-arrow-right large"></i>
