@@ -50,14 +50,18 @@ class HostnamesController < ApplicationController
   # PATCH/PUT /hostnames/1
   # PATCH/PUT /hostnames/1.json
   def update
-    redirect_to root_path, alert: 'Not authorised' if @hostname.user != nil && @hostname.user != current_user
     respond_to do |format|
-      if @hostname.update(hostname_update_params)
-        format.html { redirect_to @hostname, notice: 'IP address was successfully updated.' }
-        format.json { render :show, status: :ok, location: @hostname }
+      if @hostname.user != nil and @hostname.user == current_user
+        if @hostname.update(hostname_update_params)
+          format.html { redirect_to @hostname, notice: 'IP address was successfully updated.' }
+          format.json { render :show, status: :ok, location: @hostname }
+        else
+          format.html { render :edit }
+          format.json { render json: @hostname.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @hostname.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: 'That hostname is owned by someone else!' }
+        format.json { render json: { message: 'Hostname owned by another user' }, status: 403 }
       end
     end
   end
