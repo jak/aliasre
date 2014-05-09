@@ -13,6 +13,7 @@ class HostnamesController < ApplicationController
   def show
     @hostname.user ||= current_user
     @hostname.save
+    session['user_return_to'] = hostname_path(@hostname)
   end
 
   # GET /hostnames/new
