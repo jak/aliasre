@@ -1,6 +1,11 @@
 class HostnamesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :destroy]
   before_action :set_hostname, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, if: :api_request?
+  
+  def api_request?
+    request.format.json?
+  end
 
   # GET /hostnames
   # GET /hostnames.json
@@ -45,6 +50,7 @@ class HostnamesController < ApplicationController
   # PATCH/PUT /hostnames/1
   # PATCH/PUT /hostnames/1.json
   def update
+    redirect_to root_path, alert: 'Not authorised' if @hostname.user != nil && @hostname.user != current_user
     respond_to do |format|
       if @hostname.update(hostname_update_params)
         format.html { redirect_to @hostname, notice: 'IP address was successfully updated.' }
