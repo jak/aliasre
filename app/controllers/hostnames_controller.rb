@@ -1,8 +1,8 @@
 class HostnamesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :destroy]
-  before_action :set_hostname, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :destroy, :generate_new_token]
+  before_action :set_hostname, only: [:show, :edit, :update, :destroy, :updateip, :generate_new_token]
   skip_before_action :verify_authenticity_token, if: :api_request?
-  
+
   def api_request?
     request.format.json?
   end
@@ -73,6 +73,30 @@ class HostnamesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to hostnames_url, notice: 'Alias was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def updateip
+    if params[:token] == @hostname.token
+      @hostname.ipaddress = params[:ip] || request.remote_ip
+      if @hostname.save
+        render plain: "OK"
+      else
+        render plain: "ERROR", status: :unprocessable_entity
+      end
+    end
+  end
+
+  def generate_new_token
+    @hostname.generate_token
+    respond_to do |format|
+      if @hostname.save
+        format.html { redirect_to edit_hostname_path(@hostname), notice: 'Token was successfully changed.' }
+        format.json { render :show, status: :ok, location: @hostname }
+      else
+        format.html { render :edit }
+        format.json { render json: @hostname.errors, status: :unprocessable_entity }
+      end
     end
   end
 

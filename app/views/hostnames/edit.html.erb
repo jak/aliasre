@@ -2,7 +2,14 @@
   <div class="large-12 columns">
     <h1>Alias</h1>
     <%= render 'form' %>
+  </div>
+  <div class="large-12 columns">
+    <h3>Update via curl/wget/command line</h3>
+    <pre><%= @hostname.update_url %></pre><br>
+    <%= link_to 'Generate new token', generate_new_token_hostname_path(@hostname), class: 'button' %>
+  </div>
+  <div class="large-12 columns">
     <%= link_to 'Show', @hostname %> |
-	<%= link_to 'All', hostnames_path %>
+    <%= link_to 'All', hostnames_path %>
   </div>
 </div>

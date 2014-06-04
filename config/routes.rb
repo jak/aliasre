@@ -1,5 +1,10 @@
 Aliasre::Application.routes.draw do
-  resources :hostnames, path: 'aliases', param: :name
+  resources :hostnames, path: 'aliases', param: :name do
+    member do
+      get :updateip
+      get :generate_new_token
+    end
+  end
 
   authenticated :user do
     root to: "hostnames#index", as: :authenticated_root
