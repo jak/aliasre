@@ -12,7 +12,6 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'foundation-rails'
 gem 'pg'
-gem 'mysql2'
 gem 'aws-sdk', '~> 1.39.0'
 gem 'puma'
 group :development do
