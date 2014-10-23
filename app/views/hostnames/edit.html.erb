@@ -5,7 +5,10 @@
   </div>
   <div class="large-12 columns">
     <h3>Update via curl/wget/command line</h3>
-    <pre><%= @hostname.update_url %></pre><br>
+    <p>You can update it with your external IP Address...</p>
+    <pre><%= @hostname.update_url %></pre>
+    <p>..or you can specify what IP Address to update to.</p>
+    <pre><%= @hostname.update_url_with_ip %></pre><br>
     <%= link_to 'Generate new token', generate_new_token_hostname_path(@hostname), class: 'button' %>
   </div>
   <div class="large-12 columns">

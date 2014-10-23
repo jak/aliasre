@@ -31,6 +31,10 @@ class Hostname < ActiveRecord::Base
     "https://alias.re/aliases/#{name}/updateip?token=#{token}"
   end
 
+  def update_url_with_ip
+    "#{update_url}&ip=#{ipaddress}"
+  end
+
   private
     def user_cant_have_too_many_hostnames
       errors.add :user, "has too many aliases" if user != nil && user.hostnames.size > 5
